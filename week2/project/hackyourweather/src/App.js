@@ -19,7 +19,7 @@ function App() {
     setLoading(true);
     setError(false);
     const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
-    const apiURL = `http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}`;
+    const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${apiKey}`;
     try {
       if (searchCity) {
         const res = await fetch(apiURL);
