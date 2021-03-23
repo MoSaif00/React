@@ -1,0 +1,25 @@
+.button {
+  background-color: rgb(107, 107, 151);
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  color: white;
+  margin: 10px auto;
+}
+.button:hover {
+  color: rgb(107, 107, 151);
+  background-color: white;
+  cursor: pointer;
+  outline: white;
+}
+.loading_message {
+  color: green;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  font-size: 18px;
+}
+.error_message {
+  color: red;
+  padding: 10px;
+  font-size: 18px;
+}
