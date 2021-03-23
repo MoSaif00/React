@@ -26,7 +26,6 @@ function App() {
 
         if (res.ok) {
           const data = await res.json();
-          console.log(data);
           setCityWeather([data]);
         } else {
           setError({show: true, error: `${searchCity}'s is not a city name`});
