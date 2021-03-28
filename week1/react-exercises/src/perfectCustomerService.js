@@ -1,5 +1,5 @@
 import React from 'react';
-import guaranteeList from './GuaranteeList';
+import guaranteeList from './guaranteeList';
 const shuffle = require('lodash.shuffle');
 
 function GuaranteeDetails(props) {
