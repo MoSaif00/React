@@ -1,6 +1,5 @@
 import React from 'react';
 import guaranteeList from './guaranteeList';
-const shuffle = require('lodash.shuffle');
 
 function GuaranteeDetails(props) {
   const {img, title, description} = props;
@@ -13,7 +12,9 @@ function GuaranteeDetails(props) {
   );
 }
 function Guarantee() {
-  const shuffleGuaranteeItems = shuffle(guaranteeList);
+  const shuffleGuaranteeItems = guaranteeList.sort(function () {
+    return 0.5 - Math.random();
+  });
 
   return (
     <div className="guarantee_container">
