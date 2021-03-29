@@ -2,12 +2,12 @@ import React from 'react';
 import './css/LoadingMessage.css';
 
 function Loading(props) {
-  const {isLoading, searchCity} = props;
+  const {isLoading, searchedCity} = props;
   return (
     <>
       {isLoading && (
         <p className="loading_message">
-          "<strong>{searchCity}</strong>" data is loading ...
+          "<strong>{searchedCity}</strong>" data is loading ...
         </p>
       )}
     </>
