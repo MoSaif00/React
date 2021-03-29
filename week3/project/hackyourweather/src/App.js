@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
 import SearchForm from './components/SearchForm';
 import CityDetails from './components/CityDisplayBlock';
@@ -26,7 +26,7 @@ function App() {
 
         if (res.ok) {
           const data = await res.json();
-          setCityWeather([data]);
+          setCityWeather([data, ...cityWeather]);
         } else {
           setError({show: true, error: `${searchCity}'s is not a city name`});
         }
@@ -41,6 +41,10 @@ function App() {
     }
   };
 
+  useEffect((searchCity) => {
+    fetchWeatherData();
+  }, []);
+
   const onInputChange = (e) => {
     setSearchCity(e.target.value);
   };
@@ -50,20 +54,32 @@ function App() {
     fetchWeatherData();
     e.target.reset();
   };
+  const onDeleteHandler = (cityData) => {
+    const newCities = cityWeather.filter((city) => city !== cityData);
+    setCityWeather([...newCities]);
+  };
 
   return (
     <div className="container">
       <Header />
       <SearchForm
         onSubmit={onSubmitHandler}
-        onClick={() => fetchWeatherData()}
+        onClick={fetchWeatherData}
         searchCity={searchCity}
         hasError={hasError}
         onInputChange={onInputChange}
       />
       <Loading isLoading={isLoading} searchCity={searchCity} />
-
-      <CityDetails cityWeather={cityWeather} />
+      {!hasError &&
+        cityWeather.map((weather, index) => {
+          return (
+            <CityDetails
+              key={index}
+              weather={weather}
+              handleDelete={() => onDeleteHandler(weather)}
+            />
+          );
+        })}
     </div>
   );
 }

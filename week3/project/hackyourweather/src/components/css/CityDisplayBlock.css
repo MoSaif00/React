@@ -5,6 +5,7 @@
   border: black solid 2px;
   background-color: rgb(236, 231, 220);
   border-radius: 10px;
+  position: relative;
 }
 
 .city_name {
@@ -12,20 +13,23 @@
   padding-bottom: 15px;
 }
 .country_name {
-  font-size: 35px;
+  font-size: 25px;
 }
 
-.weather_main {
+/* .weather_main {
   display: flex;
   flex-direction: column;
 }
 .weather_description {
   font-size: 20px;
-}
+} */
 .max_temperature,
 .min_temperature,
 .location,
 .weather_main {
   text-align: left;
   color: blue;
+}
+.max_temperature {
+  padding-top: 20px;
 }

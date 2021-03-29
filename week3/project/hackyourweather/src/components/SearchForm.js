@@ -13,7 +13,7 @@ function SearchForm(props) {
           type="search"
           value={searchCity}
           onChange={onInputChange}
-          placeHolder="Enter a city name ..."
+          placeholder="Enter a city name ..."
           required
         />
 
