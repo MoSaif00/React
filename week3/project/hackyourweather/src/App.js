@@ -15,7 +15,7 @@ function App() {
     error: 'Oops... something went wrong with bringing the weather data to you',
   });
 
-  const fetchWeatherData = async () => {
+  const fetchWeatherData = async (e) => {
     setLoading(true);
     setError(false);
     const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
@@ -52,7 +52,7 @@ function App() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     fetchWeatherData();
-    e.target.reset();
+    setSearchedCity('');
   };
   const onDeleteHandler = (deletedCityData) => {
     const newSearchCitiesList = cityWeatherData.filter(
@@ -66,7 +66,7 @@ function App() {
       <Header />
       <SearchForm
         onSubmit={onSubmitHandler}
-        onClick={onSubmitHandler}
+        onClick={fetchWeatherData}
         searchedCity={searchedCity}
         hasError={hasError}
         onInputChange={onInputChangeHandler}
