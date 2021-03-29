@@ -7,7 +7,7 @@ function CityDetails(props) {
   return (
     <div className="weather_container">
       <h1 className="city_name">
-        {weather.name},{' '}
+        {weather.name},
         <span className="country_name">{weather.sys.country} </span>
       </h1>
       <h2 className="weather_main">
