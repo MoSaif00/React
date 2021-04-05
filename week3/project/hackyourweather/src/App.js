@@ -12,7 +12,6 @@ function App() {
   const [isLoading, setLoading] = useState(false);
   const [hasError, setError] = useState({
     show: false,
-    error: 'Oops... something went wrong with bringing the weather data to you',
   });
 
   const fetchWeatherData = async (e) => {
@@ -28,7 +27,10 @@ function App() {
           const data = await res.json();
           setCityWeatherData([data, ...cityWeatherData]);
         } else {
-          setError({show: true, error: `${searchedCity}'s is not a city name`});
+          setError({
+            show: true,
+            error: `${searchedCity}'s is not a city name`,
+          });
         }
       }
     } catch (err) {
@@ -43,6 +45,12 @@ function App() {
 
   useEffect(() => {
     fetchWeatherData();
+    const timer = setTimeout(() => {
+      setError({show: false});
+    }, 3000);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const onInputChangeHandler = (e) => {
@@ -58,6 +66,7 @@ function App() {
     const newSearchCitiesList = cityWeatherData.filter(
       (city) => city !== deletedCityData
     );
+
     setCityWeatherData([...newSearchCitiesList]);
   };
 
@@ -71,7 +80,7 @@ function App() {
         hasError={hasError}
         onInputChange={onInputChangeHandler}
       />
-      <Loading isLoading={isLoading} searchedCity={searchedCity} />
+      <Loading isLoading={isLoading} />
       {!hasError &&
         cityWeatherData.map((weather, index) => {
           return (

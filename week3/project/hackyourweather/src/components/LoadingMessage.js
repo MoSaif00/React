@@ -2,15 +2,9 @@ import React from 'react';
 import './css/LoadingMessage.css';
 
 function Loading(props) {
-  const {isLoading, searchedCity} = props;
+  const {isLoading} = props;
   return (
-    <>
-      {isLoading && (
-        <p className="loading_message">
-          "<strong>{searchedCity}</strong>" data is loading ...
-        </p>
-      )}
-    </>
+    <>{isLoading && <p className="loading_message">data is loading ...</p>}</>
   );
 }
 

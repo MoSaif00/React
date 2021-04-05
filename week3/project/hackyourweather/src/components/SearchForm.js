@@ -1,10 +1,21 @@
 import React from 'react';
 import SearchButton from './SearchButton';
 import Error from './ErrorMessage';
+
 import './css/SearchForm.css';
 
 function SearchForm(props) {
-  const {searchedCity, hasError, onClick, onInputChange, onSubmit} = props;
+  const {
+    searchedCity,
+
+    hasError,
+    onClick,
+    onInputChange,
+    onSubmit,
+  } = props;
+
+  const disabled = searchedCity.trim() === '' ? true : false;
+
   return (
     <div className="form_container">
       <form onSubmit={onSubmit}>
@@ -14,10 +25,13 @@ function SearchForm(props) {
           value={searchedCity}
           onChange={onInputChange}
           placeholder="Enter a city name ..."
-          required
+        />
+        <SearchButton
+          buttonContent="SEARCH"
+          onClick={onClick}
+          disabled={disabled}
         />
 
-        <SearchButton buttonContent="SEARCH" onClick={onClick} />
         <Error hasError={hasError} />
       </form>
     </div>
