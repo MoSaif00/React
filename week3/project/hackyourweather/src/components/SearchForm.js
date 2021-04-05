@@ -5,14 +5,7 @@ import Error from './ErrorMessage';
 import './css/SearchForm.css';
 
 function SearchForm(props) {
-  const {
-    searchedCity,
-
-    hasError,
-    onClick,
-    onInputChange,
-    onSubmit,
-  } = props;
+  const {searchedCity, hasError, onClick, onInputChange, onSubmit} = props;
 
   const disabled = searchedCity.trim() === '' ? true : false;
 
