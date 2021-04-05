@@ -7,9 +7,14 @@
   border-radius: 10px;
   position: relative;
 }
+.router_link {
+  text-decoration: none;
+  color: inherit;
+}
 
 .city_name {
   padding-bottom: 15px;
+  text-decoration: none;
 }
 .country_name {
   font-size: 25px;

@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Header from './components/Header';
 import SearchForm from './components/SearchForm';
 import CityDetails from './components/CityDisplayBlock';
 import Loading from './components/LoadingMessage';
-
+import CityChart from './components/CityChart';
 import './App.css';
 
 function App() {
@@ -71,27 +72,38 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <Header />
-      <SearchForm
-        onSubmit={onSubmitHandler}
-        onClick={fetchWeatherData}
-        searchedCity={searchedCity}
-        hasError={hasError}
-        onInputChange={onInputChangeHandler}
-      />
-      <Loading isLoading={isLoading} />
-      {!hasError &&
-        cityWeatherData.map((weather, index) => {
-          return (
-            <CityDetails
-              key={index}
-              weather={weather}
-              handleDelete={() => onDeleteHandler(weather)}
-            />
-          );
-        })}
-    </div>
+    <Router>
+      <div className="container">
+        <Switch>
+          <Route exact path="/">
+            {<Header />}
+            {
+              <SearchForm
+                onSubmit={onSubmitHandler}
+                onClick={fetchWeatherData}
+                searchedCity={searchedCity}
+                hasError={hasError}
+                onInputChange={onInputChangeHandler}
+              />
+            }
+
+            {<Loading isLoading={isLoading} />}
+            {!hasError &&
+              cityWeatherData.map((weather, index) => {
+                return (
+                  <CityDetails
+                    key={index}
+                    weather={weather}
+                    handleDelete={() => onDeleteHandler(weather)}
+                  />
+                );
+              })}
+          </Route>
+
+          <Route path="/:cityId" children={<CityChart />}></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
