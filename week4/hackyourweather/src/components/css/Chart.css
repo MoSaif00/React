@@ -1,0 +1,13 @@
+.city_name_chart {
+  color: blue;
+}
+
+.chart_container {
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+}
+.chart {
+  width: 80%;
+  height: 400px;
+}

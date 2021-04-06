@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // useLocation,
+} from 'react-router-dom';
 import Header from './components/Header';
 import SearchForm from './components/SearchForm';
 import CityDetails from './components/CityDisplayBlock';
 import Loading from './components/LoadingMessage';
 import CityChart from './components/CityChart';
 import './App.css';
+import './components/css/Header.css';
 
 function App() {
   const [searchedCity, setSearchedCity] = useState('');
@@ -23,7 +29,6 @@ function App() {
     try {
       if (searchedCity) {
         const res = await fetch(apiURL);
-
         if (res.ok) {
           const data = await res.json();
           setCityWeatherData([data, ...cityWeatherData]);
@@ -46,12 +51,6 @@ function App() {
 
   useEffect(() => {
     fetchWeatherData();
-    const timer = setTimeout(() => {
-      setError({show: false});
-    }, 3000);
-    return () => {
-      clearTimeout(timer);
-    };
   }, []);
 
   const onInputChangeHandler = (e) => {
@@ -63,31 +62,32 @@ function App() {
     fetchWeatherData();
     setSearchedCity('');
   };
+
   const onDeleteHandler = (deletedCityData) => {
     const newSearchCitiesList = cityWeatherData.filter(
       (city) => city !== deletedCityData
     );
-
     setCityWeatherData([...newSearchCitiesList]);
   };
 
+  function kelvinToCelsius(kelvin) {
+    return (kelvin - 273).toFixed(2);
+  }
   return (
     <Router>
       <div className="container">
         <Switch>
           <Route exact path="/">
-            {<Header />}
-            {
-              <SearchForm
-                onSubmit={onSubmitHandler}
-                onClick={fetchWeatherData}
-                searchedCity={searchedCity}
-                hasError={hasError}
-                onInputChange={onInputChangeHandler}
-              />
-            }
+            <Header />
 
-            {<Loading isLoading={isLoading} />}
+            <SearchForm
+              onSubmit={onSubmitHandler}
+              onClick={fetchWeatherData}
+              searchedCity={searchedCity}
+              hasError={hasError}
+              onInputChange={onInputChangeHandler}
+            />
+            <Loading isLoading={isLoading} />
             {!hasError &&
               cityWeatherData.map((weather, index) => {
                 return (
@@ -95,12 +95,16 @@ function App() {
                     key={index}
                     weather={weather}
                     handleDelete={() => onDeleteHandler(weather)}
+                    kelvinToCelsius={kelvinToCelsius}
                   />
                 );
               })}
           </Route>
 
-          <Route path="/:cityId" children={<CityChart />}></Route>
+          <Route
+            path="/:cityId"
+            children={<CityChart kelvinToCelsius={kelvinToCelsius} />}
+          ></Route>
         </Switch>
       </div>
     </Router>

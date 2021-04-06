@@ -4,7 +4,7 @@ import './css/CityDisplayBlock.css';
 import {Link} from 'react-router-dom';
 
 function CityDetails(props) {
-  const {handleDelete, weather} = props;
+  const {handleDelete, weather, kelvinToCelsius} = props;
   return (
     <div className="weather_container">
       <Link to={`/${weather.id}`} className="router_link">
@@ -20,10 +20,10 @@ function CityDetails(props) {
             </span>
           </h2>
           <h4 className="max_temperature">
-            Max temp : {weather.main.temp_max}
+            Max temp : {kelvinToCelsius(weather.main.temp_max)}
           </h4>
           <h4 className="min_temperature">
-            Min temp : {weather.main.temp_min}
+            Min temp : {kelvinToCelsius(weather.main.temp_min)}
           </h4>
           <h4 className="location">
             Location : {weather.coord.lon} , {weather.coord.lat}

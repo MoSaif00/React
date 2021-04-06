@@ -20,7 +20,7 @@ function SearchForm(props) {
           placeholder="Enter a city name ..."
         />
         <SearchButton
-          buttonContent="SEARCH"
+          buttonContent="SEARCH &#128270;"
           onClick={onClick}
           disabled={disabled}
         />
