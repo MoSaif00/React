@@ -1,9 +1,9 @@
 .weather_container {
   width: 400px;
-  margin: 30px auto;
+  margin: 10px auto 20px auto;
   padding: 0 30px;
-  border: black solid 2px;
-  background-color: rgb(236, 231, 220);
+  border: #393232 solid 2px;
+  background-color: #f2edd7;
   border-radius: 10px;
   position: relative;
 }
@@ -13,8 +13,9 @@
 }
 
 .city_name {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   text-decoration: none;
+  color: #393232;
 }
 .country_name {
   font-size: 25px;
@@ -32,8 +33,8 @@
 .location,
 .weather_main {
   text-align: left;
-  color: blue;
+  color: #3a6351;
 }
 .max_temperature {
-  padding-top: 20px;
+  padding-top: 10px;
 }

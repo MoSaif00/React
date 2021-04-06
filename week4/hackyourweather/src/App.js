@@ -73,13 +73,13 @@ function App() {
   function kelvinToCelsius(kelvin) {
     return (kelvin - 273).toFixed(2);
   }
+
   return (
     <Router>
       <div className="container">
         <Switch>
           <Route exact path="/">
             <Header />
-
             <SearchForm
               onSubmit={onSubmitHandler}
               onClick={fetchWeatherData}

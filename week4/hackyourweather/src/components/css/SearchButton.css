@@ -1,13 +1,14 @@
 .search_button {
   padding: 7px 10px;
   font-size: 14px;
-  color: blue;
-  border-color: black;
+  color: #393232;
+  border-color: #393232;
   border-radius: 5px;
-  background-color: rgb(238, 224, 197);
+  background-color: #f2edd7;
+  font-weight: bold;
 }
 .search_button:hover {
-  border-color: blue;
-  background-color: white;
-  color: black;
+  border-color: #f2edd7;
+  background-color: #e48257;
+  color: #f2edd7;
 }

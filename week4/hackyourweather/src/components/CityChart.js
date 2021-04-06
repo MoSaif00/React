@@ -11,7 +11,7 @@ import {
 } from 'recharts';
 import Error from './ErrorMessage';
 import Loading from './LoadingMessage';
-import './css/Chart.css';
+import './css/CityChart.css';
 
 function CityChart({kelvinToCelsius}) {
   const {cityId} = useParams();
@@ -87,21 +87,21 @@ function CityChart({kelvinToCelsius}) {
               height={400}
               data={cityChartData.foreCastList}
               margin={{
-                top: 10,
-                right: 30,
-                left: 0,
-                bottom: 0,
+                top: 30,
+                right: 50,
+                left: 10,
+                bottom: 10,
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis />
+              <XAxis stroke="#393232" dataKey="date" />
+              <YAxis stroke="#393232" />
               <Tooltip />
               <Area
                 type="monotone"
                 dataKey="temp"
-                stroke="#8884d8"
-                fill="#8884d8"
+                stroke="#e48257"
+                fill="#3a6351"
               />
             </AreaChart>
           </ResponsiveContainer>
@@ -115,12 +115,3 @@ function CityChart({kelvinToCelsius}) {
 }
 
 export default CityChart;
-// {
-//   /* {cityChartData.map((cityData) => {
-//         return (
-//           <div>
-//             <p>{cityData[0].city.name}</p>
-//             <h2>{cityData[0].list.main.temp}</h2>
-//           </div>
-//         ); */
-// }

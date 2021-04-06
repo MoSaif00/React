@@ -12,6 +12,9 @@ code {
     monospace;
 }
 
+body {
+  background-image: url('https://source.unsplash.com/1600x900/?weather,temperature');
+}
 #root {
   text-align: center;
 }
