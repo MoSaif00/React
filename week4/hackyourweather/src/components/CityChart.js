@@ -33,9 +33,7 @@ function CityChart({kelvinToCelsius}) {
       try {
         if (cityId) {
           const res = await fetch(apiURL);
-          console.log(res);
           const data = await res.json();
-          console.log(data);
           if (res.ok) {
             let newCityChartData = {
               cityName: data.city.name,
