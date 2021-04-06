@@ -1,18 +1,16 @@
 import React from 'react';
 import './css/City_Display_Block.css';
 
-function CityDetails(props) {
-  const {
-    cityName,
-    countryName,
-    weatherMain,
-    weatherDescription,
-    maxTemperature,
-    minTemperature,
-    longitude,
-    latitude,
-  } = props;
-
+function CityDetails({
+  cityName,
+  countryName,
+  weatherMain,
+  weatherDescription,
+  maxTemperature,
+  minTemperature,
+  longitude,
+  latitude,
+}) {
   return (
     <div className="weather_container">
       <h1 className="city_name" key={cityName}>

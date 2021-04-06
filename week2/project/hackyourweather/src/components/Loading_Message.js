@@ -1,8 +1,7 @@
 import React from 'react';
 import './css/Loading_Message.css';
 
-function Loading(props) {
-  const {isLoading, searchCity} = props;
+function Loading({isLoading, searchCity}) {
   return (
     <>
       {isLoading && (

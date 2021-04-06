@@ -3,8 +3,7 @@ import SearchButton from './Search_Button';
 import Error from './Error_Message';
 import './css/Search_Form.css';
 
-function SearchForm(props) {
-  const {searchCity, hasError, onClick, onInputChange, onSubmit} = props;
+function SearchForm({searchCity, hasError, onClick, onInputChange, onSubmit}) {
   return (
     <div className="form_container">
       <form onSubmit={onSubmit}>
