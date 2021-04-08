@@ -3,8 +3,7 @@ import DeleteButton from './DeleteButton';
 import './css/CityDisplayBlock.css';
 import {Link} from 'react-router-dom';
 
-function CityDetails(props) {
-  const {handleDelete, weather, kelvinToCelsius} = props;
+function CityDetails({handleDelete, weather, kelvinToCelsius}) {
   return (
     <div className="weather_container">
       <Link to={`/${weather.id}`} className="router_link">

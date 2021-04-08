@@ -1,5 +1,6 @@
 import React from 'react';
 import './css/DeleteButton.css';
+
 function DeleteButton({handleDeleteOnClick}) {
   return (
     <>

@@ -1,8 +1,7 @@
 import React from 'react';
 import './css/ErrorMessage.css';
 
-function Error(props) {
-  const {hasError} = props;
+function Error({hasError}) {
   return (
     <>
       {hasError.show === true && (
