@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SearchButton from './SearchButton';
 import Error from './ErrorMessage';
 
 import './css/SearchForm.css';
 
-function SearchForm(props) {
-  const {searchedCity, hasError, onClick, onInputChange, onSubmit} = props;
+function SearchForm({
+  searchedCity,
+  hasError,
+  onClick,
+  onInputChange,
+  onSubmit,
+}) {
+  const [disabledStatus, setDisabledStatus] = useState(true);
 
-  const disabled = searchedCity.trim() === '' ? true : false;
+  useEffect(() => {
+    // Source : https://github.com/HackYourHomework/React/pull/27/files#diff-1928d31247cdc0d9ec786b9584351e715bf367a4a394b67e8a60f7fb9626245aR10
+    const spaceExcludedLength = searchedCity.replace(/[^a-z]/gi, '').length;
+    const conditionOfButton = !(spaceExcludedLength >= 1);
+    setDisabledStatus(conditionOfButton);
+  }, [searchedCity]);
 
   return (
     <div className="form_container">
@@ -22,7 +33,7 @@ function SearchForm(props) {
         <SearchButton
           buttonContent="SEARCH &#128270;"
           onClick={onClick}
-          disabled={disabled}
+          disabled={disabledStatus}
         />
 
         <Error hasError={hasError} />
