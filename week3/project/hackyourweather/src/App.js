@@ -45,12 +45,6 @@ function App() {
 
   useEffect(() => {
     fetchWeatherData();
-    const timer = setTimeout(() => {
-      setError({show: false});
-    }, 3000);
-    return () => {
-      clearTimeout(timer);
-    };
   }, []);
 
   const onInputChangeHandler = (e) => {
@@ -66,7 +60,6 @@ function App() {
     const newSearchCitiesList = cityWeatherData.filter(
       (city) => city !== deletedCityData
     );
-
     setCityWeatherData([...newSearchCitiesList]);
   };
 
